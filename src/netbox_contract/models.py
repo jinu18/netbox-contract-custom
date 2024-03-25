@@ -19,8 +19,8 @@ class StatusChoices(ChoiceSet):
     ]
 
 
-class InternalEntityChoices(ChoiceSet):
-    key = 'Contract.internal_partie'
+#class InternalEntityChoices(ChoiceSet):
+   # key = 'Contract.internal_partie'
 
     ENTITY = 'Default entity'
 
@@ -95,9 +95,8 @@ class Contract(NetBoxModel):
     )
 
     external_reference = models.CharField(max_length=100, blank=True, null=True)
-    internal_partie = models.CharField(
-        max_length=50,
-        choices=InternalEntityChoices,
+    internal_partie = models.ForeignKey(
+        to='circuits.provideraccounts', on_delete=models.CASCADE, blank=True, null=True
     )
     tenant = models.ForeignKey(
         to='tenancy.Tenant',
@@ -120,15 +119,15 @@ class Contract(NetBoxModel):
     currency = models.CharField(
         max_length=3, choices=CurrencyChoices, default=CurrencyChoices.CURRENCY_USD
     )
-    accounting_dimensions = models.JSONField(null=True, blank=True)
+    #accounting_dimensions = models.JSONField(null=True, blank=True)
     mrc = models.DecimalField(
-        verbose_name='Monthly recuring cost', max_digits=10, decimal_places=2
+        verbose_name='Billing Rate', max_digits=10, decimal_places=2
     )
-    nrc = models.DecimalField(
-        verbose_name='None recuring cost', default=0, max_digits=10, decimal_places=2
-    )
-    invoice_frequency = models.IntegerField(
-        help_text='The frequency of invoices in month', default=1
+    #nrc = models.DecimalField(
+        #verbose_name='None recuring cost', default=0, max_digits=10, decimal_places=2
+    #)
+    #invoice_frequency = models.IntegerField(
+        #help_text='The frequency of invoices in month', default=1
     )
     circuit = models.ManyToManyField(Circuit, related_name='contracts', blank=True)
     documents = models.URLField(blank=True)
