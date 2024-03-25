@@ -48,7 +48,6 @@ class ContractAssignmentObjectTable(NetBoxTable):
             'contract__start_date',
             'contract__end_date',
             'contract__mrc',
-            'contract__nrc',
             'actions',
         )
         default_columns = (
@@ -60,7 +59,6 @@ class ContractAssignmentObjectTable(NetBoxTable):
             'contract__start_date',
             'contract__end_date',
             'contract__mrc',
-            'contract__nrc',
         )
 
 
@@ -106,13 +104,8 @@ class ContractListTable(NetBoxTable):
             'status',
             'start_date',
             'end_date',
-            'initial_term',
-            'renewal_term',
             'currency',
-            'accounting_dimensions',
             'mrc',
-            'nrc',
-            'invoice_frequency',
             'documents',
             'comments',
             'parent',
