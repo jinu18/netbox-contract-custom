@@ -110,12 +110,12 @@ class Contract(NetBoxModel):
     )
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
-    initial_term = models.IntegerField(
-        help_text='In month', default=12, blank=True, null=True
+    #initial_term = models.IntegerField(
+        #help_text='In month', default=12, blank=True, null=True
     )
-    renewal_term = models.IntegerField(
-        help_text='In month', default=12, blank=True, null=True
-    )
+    #renewal_term = models.IntegerField(
+       # help_text='In month', default=12, blank=True, null=True
+    #)
     currency = models.CharField(
         max_length=3, choices=CurrencyChoices, default=CurrencyChoices.CURRENCY_USD
     )
